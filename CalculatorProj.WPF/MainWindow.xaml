@@ -5,13 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorProj.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <TextBox x:Name="tFa" AutomationProperties.AutomationId="fa"/>
-            <TextBox x:Name="tSa" AutomationProperties.AutomationId="sa"/>
-            <Button Content="Summ" Click="Button_Click" AutomationProperties.AutomationId="addBtn"/>
-            <TextBlock x:Name="tbRes" AutomationProperties.AutomationId="res"/>
-        </StackPanel>
+        Title="CalculatorProj.WPF" Height="450" Width="800">
+    <Grid AutomationProperties.AutomationId="mainGridId" PreviewTextInput="OnMainGridTextInput">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="firstArgId" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <TextBlock x:Name="operationId" Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="secondArgId" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <TextBlock x:Name="resultId" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

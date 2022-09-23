@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculatorProj.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +19,59 @@ namespace CalculatorProj.WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, ICalculatorView
     {
+        private ICalculatorPresenter? _presenter;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void DisplayError(string message)
         {
-            tbRes.Text = (double.Parse(tFa.Text) + double.Parse(tSa.Text)).ToString();
+            MessageBox.Show(message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public string GetFirstArgumentAsString()
+            => firstArgId.Text;
+
+        public string GetSecondArgumentAsString()
+            => secondArgId.Text;
+
+        public void PrintResult(double result)
+        {
+            resultId.Text = result.ToString();
+        }
+
+        private void OnMainGridTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (_presenter is null)
+                _presenter = new CalculatorPresenter(this, new Calculator());
+
+            switch (e.Text)
+            {
+                case "/":
+                    _presenter.OnDivideClicked();
+                    operationId.Text = e.Text;
+                    break;
+                case "*":
+                    _presenter.OnMultiplyClicked();
+                    operationId.Text = e.Text;
+                    break;
+                case "+":
+                    _presenter.OnPlusClicked();
+                    operationId.Text = e.Text;
+                    break;
+                case "-":
+                    _presenter.OnMinusClicked();
+                    operationId.Text = e.Text;
+                    break;
+                default:
+                    return;
+                    //DisplayError("Неизвестная операция");
+            }
+            e.Handled = true;
         }
     }
 }
