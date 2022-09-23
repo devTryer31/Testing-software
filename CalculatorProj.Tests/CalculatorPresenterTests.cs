@@ -44,7 +44,8 @@ namespace CalculatorProj.Tests
             //act
             _presenter.OnDivideClicked();
             //res
-            Assert.Equal(1, _viewMock.PrintResultInvokeCount);
+            Assert.Equal(0, _viewMock.PrintResultInvokeCount);
+            Assert.Equal(1, _viewMock.DisplayErrorInvokeCount);
             Assert.Equal(1, _viewMock.GetSecondArgumentAsStringInvokeCount);
             Assert.Equal(1, _viewMock.GetFirstArgumentAsStringInvokeCount);
         }
@@ -88,7 +89,7 @@ namespace CalculatorProj.Tests
 
     internal class CalculatorStub : ICalculator
     {
-        public double Divide(double a, double b) => 0;
+        public double Divide(double a, double b) => b == 0 ? throw new DivideByZeroException(b.ToString()) : 0;
 
         public double Multiply(double a, double b) => 0;
 
