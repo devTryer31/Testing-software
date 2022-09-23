@@ -30,7 +30,8 @@ namespace CalculatorProj.WPF
 
         public void DisplayError(string message)
         {
-            MessageBox.Show(message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            resultId.Text = "Ошибка!" + message;
+            //MessageBox.Show(message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public string GetFirstArgumentAsString()
@@ -46,8 +47,7 @@ namespace CalculatorProj.WPF
 
         private void OnMainGridTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (_presenter is null)
-                _presenter = new CalculatorPresenter(this, new Calculator());
+            _presenter ??= new CalculatorPresenter(this, new Calculator());
 
             switch (e.Text)
             {

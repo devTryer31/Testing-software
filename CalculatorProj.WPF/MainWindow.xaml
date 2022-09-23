@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorProj.WPF"
         mc:Ignorable="d"
-        Title="CalculatorProj.WPF" Height="450" Width="800">
-    <Grid AutomationProperties.AutomationId="mainGridId" PreviewTextInput="OnMainGridTextInput">
+        Title="CalculatorProj.WPF" Height="450" Width="800" AutomationProperties.AutomationId="mainWindowId" PreviewTextInput="OnMainGridTextInput">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="auto"/>

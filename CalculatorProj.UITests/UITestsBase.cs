@@ -19,16 +19,17 @@ namespace CalculatorProj.UITests
             session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
         }
 
-        [Fact]
-        public void Test1()
-        {
-            var fa = session.FindElementByAccessibilityId("fa");
-            fa.SendKeys("123");
-            var sa = session.FindElementByAccessibilityId("sa");
-            sa.SendKeys("321");
-            session.FindElementByAccessibilityId("addBtn").Click();
-            string res = session.FindElementByAccessibilityId("res").Text;
-            Assert.Equal("444", res);
-        }
+        //example
+        //[Fact]
+        //public void Test1()
+        //{
+        //    var fa = session.FindElementByAccessibilityId("fa");
+        //    fa.SendKeys("123");
+        //    var sa = session.FindElementByAccessibilityId("sa");
+        //    sa.SendKeys("321");
+        //    session.FindElementByAccessibilityId("addBtn").Click();
+        //    string res = session.FindElementByAccessibilityId("res").Text;
+        //    Assert.Equal("444", res);
+        //}
     }
 }
