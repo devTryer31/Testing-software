@@ -27,7 +27,7 @@ namespace CalculatorProj.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            res.Text = (double.Parse(fa.Text) + double.Parse(sa.Text)).ToString();
+            tbRes.Text = (double.Parse(tFa.Text) + double.Parse(tSa.Text)).ToString();
         }
     }
 }

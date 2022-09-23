@@ -8,10 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <TextBox x:Name="fa"/>
-            <TextBox x:Name="sa"/>
-            <Button Content="Summ" Click="Button_Click"/>
-            <TextBlock x:Name="res"/>
+            <TextBox x:Name="tFa" AutomationProperties.AutomationId="fa"/>
+            <TextBox x:Name="tSa" AutomationProperties.AutomationId="sa"/>
+            <Button Content="Summ" Click="Button_Click" AutomationProperties.AutomationId="addBtn"/>
+            <TextBlock x:Name="tbRes" AutomationProperties.AutomationId="res"/>
         </StackPanel>
     </Grid>
 </Window>
