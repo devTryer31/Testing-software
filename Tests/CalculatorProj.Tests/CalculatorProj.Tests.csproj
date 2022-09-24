@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mocks\**" />
+    <EmbeddedResource Remove="Mocks\**" />
+    <None Remove="Mocks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -22,12 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CalculatorProj.Core\CalculatorProj.Core.csproj" />
-    <ProjectReference Include="..\CalculatorProj\CalculatorProj.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mocks\" />
+    <ProjectReference Include="..\..\CalculatorProj.Core\CalculatorProj.Core.csproj" />
+    <ProjectReference Include="..\..\CalculatorProj\CalculatorProj.csproj" />
   </ItemGroup>
 
 </Project>

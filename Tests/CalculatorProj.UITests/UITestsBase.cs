@@ -7,7 +7,7 @@ namespace CalculatorProj.UITests
     {
 
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private static readonly string WpfAppId = Environment.CurrentDirectory + @"\..\..\..\..\CalculatorProj.WPF\bin\Debug\net6.0-windows\CalculatorProj.WPF.exe";
+        private static readonly string WpfAppId = Environment.CurrentDirectory + @"\..\..\..\..\..\CalculatorProj.WPF\bin\Debug\net6.0-windows\CalculatorProj.WPF.exe";
 
         protected static readonly WindowsDriver<WindowsElement> session;
 
