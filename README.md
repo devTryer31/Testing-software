@@ -19,3 +19,7 @@
         Включите режим разработчика в Windows.
     </details>
 4. Запустите тесты CalculatorProj.UITests
+
+## Для запуска SpecFlowTests тестов
+- Ознакомьтесь с [данным](https://docs.specflow.org/projects/getting-started/en/latest/GettingStarted/Step1.html) ресурсом.
+- Если хотите расширить функционал тестов, то советую заглянуть [сюда](https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html).
