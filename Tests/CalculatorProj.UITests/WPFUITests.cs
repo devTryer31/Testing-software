@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatorProj.UITests
 {
@@ -69,6 +64,32 @@ namespace CalculatorProj.UITests
 
             //assert
             Assert.Contains("Ошибка", _result.Text);
+            Assert.Contains("|b|", _result.Text);
+        }
+
+        [Fact]
+        public void ArgInputError()
+        {
+            //arrange
+            _secondArg.Click(); _secondArg.Clear();
+
+            //act
+            _secondArg.SendKeys("asd");
+
+            //assert
+            Assert.Contains("Ошибка", _result.Text);
+            Assert.Contains("Неверный формат входного аргумента", _result.Text);
+
+            //arrange
+            _secondArg.Click(); _secondArg.Clear();
+            _secondArg.SendKeys("123");
+
+            _firstArg.Click(); _firstArg.Clear();
+            _firstArg.SendKeys("p-o");
+
+            //assert
+            Assert.Contains("Ошибка", _result.Text);
+            Assert.Contains("Неверный формат входного аргумента", _result.Text);
         }
     }
 }

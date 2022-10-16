@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,6 +48,9 @@ namespace CalculatorProj.WPF
 
         private void OnMainGridTextInput(object sender, TextCompositionEventArgs e)
         {
+            if (!CanDoOperation)
+                return;
+
             _presenter ??= new CalculatorPresenter(this, new Calculator());
 
             switch (e.Text)
@@ -72,6 +76,40 @@ namespace CalculatorProj.WPF
                     //DisplayError("Неизвестная операция");
             }
             e.Handled = true;
+        }
+
+        private bool _correctFirstArg = false;
+        private bool _correctSecondArg = false;
+
+        private bool CanDoOperation => _correctFirstArg && _correctSecondArg;
+
+        private bool ValidateInputArg(TextBox tb, string enteredText)
+        {
+            bool isValidInput = double.TryParse(tb!.Text + enteredText, out double d);
+            if (!isValidInput)
+            {
+                tb.BorderBrush = Brushes.Red;
+                DisplayError("Неверный формат входного аргумента");
+            }
+            else
+            {
+                tb.BorderBrush = Brushes.DarkGray;
+            }
+            return isValidInput;
+        }
+
+        private void OnArg1PreviewInput(object sender, TextCompositionEventArgs e)
+        {
+            var tb = sender as TextBox;
+            _correctFirstArg = ValidateInputArg(tb!, e.Text);
+            e.Handled = !_correctFirstArg;
+        }
+
+        private void OnArg2PreviewInput(object sender, TextCompositionEventArgs e)
+        {
+            var tb = sender as TextBox;
+            _correctSecondArg = ValidateInputArg(tb!, e.Text);
+            e.Handled = !_correctSecondArg;
         }
     }
 }
